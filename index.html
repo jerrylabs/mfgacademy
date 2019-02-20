@@ -6,6 +6,10 @@
 	  font-family: monospace;
 	  white-space: pre;
 	}
+  .code {
+    background: #ddd;
+    padding: 10px 20px  ;
+  }
 	body {
 	  width: 90%;
 	  margin: auto;
@@ -27,8 +31,8 @@
 </ol>
 <h2>2. Základní kostra HTML</h2>
 <p>HTML je značkovací jazyk, jehož prostřednictvím se vytváří web stránka jako DOM (document object model) strom. Jednotlivé značky se zapisujou do špičatých závorek, v případě párových značek obsahuje koncová značka navíc lomítko. Ukázka kostry HTML:</p>
-<code>
-&lt;!doctype html&gt;
+<div class="code">
+  <code>&lt;!doctype html&gt;
 
 &lt;html lang="cs"&gt;
   &lt;head&gt;
@@ -37,25 +41,25 @@
   &lt;body&gt;
     Text stránky
   &lt;/body&gt;
-&lt;/html&gt;
-</code>
+&lt;/html&gt;</code>
+</div>
 <p>
   Kostru zkopírujte do svého HTML souboru, "Hello world!" přesuňte do &lt;body&gt; tagu jako text stránky. Správnost formátu vašeho HTML souboru můžete ověřit ve <a href="https://validator.w3.org/" target="_blank">W3C validátoru</a>.
 </p>
 <p>Revoluční výhodou HTML je ovšem hypertext neboli odkazy. Z "Hello world!" si proto vytvoříme odkaz na vaši oblíbenou stránku, třeba <s>Pornhub</s> Google. Použijeme k tomu značku &lt;a&gt; (anchor) s parametrem href (hyperlink reference), jehož hodnota je cíl vašeho odkazu. Pokud chcete, aby se link otevíral defaultně v novém tabu, stačí přidat parametr target="_blank".</p>
-<code>
-&lt;a href="https://www.google.com" target="_blank"&gt;Hello world!&lt;/a&gt;
-</code>
+<div class="code">
+  <code>&lt;a href="https://www.google.com" target="_blank"&gt;Hello world!&lt;/a&gt;</code>
+  </div>
 <h2>3. CSS - barvičky pro váš web</h2>
 <p>CSS je jazyk pro popis vzhledu webu. Jednotlivá pravidla se skládají z tzv. selektoru, který určuje, na jaké elementy se má dané pravidlo vztahovat, a deklarací jednotlivých CSS vlastností a jejich hodnot. CSS se většinou načítají z externích souborů pomocí tagu &lt;link&gt;, ale lze je zapsat i přímo do HTML souboru. Do hlavičky vašeho HTML souboru můžete zkopírovat níže zmíněný kód, abyste invertovali defaultní barvy vaší stránky:</p>
-<code>
-&lt;style&gt;
+<div class="code">
+  <code>&lt;style&gt;
   body {
     color: white;
     background: black;
   }
-&lt;/style&gt;
-</code>
+&lt;/style&gt;</code>
+</div>
 <p>Hodnoty vlastností určující barvu lze zapisovat také jako rgb(0-255,0-255,0-255) či hexadecimáně např. #00aaff; viz tabulka níže. Pro inspiraci můžete využít <a href="https://www.jakpsatweb.cz/archiv/barvy-pojmenovane.html" target="blank">přehled pojmenovaných barev.</a></p>
 <img src="img/colors.png" />
 <h2>4. Členění stránky do sekcí</h2>
@@ -68,8 +72,8 @@ Pojďme nyní "Hello world!" v těle stránky nahradit strukturovaným obsahem. 
 <p>
 Následně tyto odstavce rozdělme do jednotlivých &lt;p&gt; tagů (odstavec) a obalme tagem &lt;div&gt;, jemuž přidáme CSS třídu (class) s hodnotou "container". Výsledný kód by měl vypadat zhruba takto:
 </p>
-<code>
-&lt;div class="container"&gt;
+<div class="code">
+  <code>&lt;div class="container"&gt;
   &lt;p&gt;
     Lorem ipsum dolor sit amet...
   &lt;/p&gt;
@@ -80,17 +84,17 @@ Následně tyto odstavce rozdělme do jednotlivých &lt;p&gt; tagů (odstavec) a
     ...
   &lt;/p&gt;
   ...
-&lt;div&gt;
-</code>
+&lt;div&gt;</code>
+</div>
 <p>V prohlížeči to nevypadá nic moc. Zkusme do CSS přidat následující pravidla (lomítko s hvězdičkou je způsob, jak v CSS psát komentáře):</p>
-<code>
-.container {          /* Selektor začínající tečkou se týká všech elementů dané třídy */
+<div class="code">
+  <code>.container {          /* Selektor začínající tečkou se týká všech elementů dané třídy */
   width: 90%;         /* Šířka */
   max-width: 600px;   /* Maximální šířka */
   margin: auto;       /* Zarovnání bloku na střed */
   text-align: center; /* Zarovnání textu na střed */
-}
-</code>
+}</code>
+</div>
 <p>
 Zkuste měnit velikosti okna prohlížeče. Právě jste vytvořili webovou stránku s fluidním designem, který se přizpůsobuje velikosti viewportu.
 </p>
@@ -98,8 +102,8 @@ Zkuste měnit velikosti okna prohlížeče. Právě jste vytvořili webovou str�
 <p>
 Je trošku divné zobrazovat stejnou velikost písmenek na full HD monitoru i na mrňavém mobilu. Naštěstí CSS umožňuje nadefinovat si pravidla specificky pro jednotlivé rozměry viewportu. Zkopírujme níže uvedený kód do vaších stylů:
 </p>
-<code>
-body {
+<div class="code">
+  <code>body {
   font-size: 20px;
 }
 @media(max-width: 1200px) {
@@ -121,22 +125,22 @@ body {
   body {
     font-size: 12px;
   }
-}
-</code>
-Zkuste si nyní pohrát s velikostí okna vašeho prohlížeče - velikost písma by se měla přizpůsobovat! Navíc pokud budete pro rozměry dalších elementů používat jednotky rem, budou se rovněž škálovat podle těchto velikostí (rem = šířka písmene M v rootu DOM stromu), což je vyloženě husté! A pokud používáte Chrome, můžete se v Dev Tools (F12) podívat, jak váš super web vypadá v mobilu.</p>
+}</code>
+</div>
+<p>Zkuste si nyní pohrát s velikostí okna vašeho prohlížeče - velikost písma by se měla přizpůsobovat! Navíc pokud budete pro rozměry dalších elementů používat jednotky rem, budou se rovněž škálovat podle těchto velikostí (rem = šířka písmene M v rootu DOM stromu), což je vyloženě husté! A pokud používáte Chrome, můžete se v Dev Tools (F12) podívat, jak váš super web vypadá v mobilu.</p>
 <img src="img/mobileview.png" />
 <p>
 Abychom zamezili "chytrým" telefonům všelijak webovou stránku velikostně škálovat a dělat podobné prasečiny, je doporučováno do hlavičky v HTML přidat ještě:
 </p>
-<code>
-&lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;
-</code>
+<div class="code">
+  <code>&lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;</code>
+  </div>
 <h2>6. Menu</h2>
 <p>Nyní trošku přitvrdíme. Každá webová stránka stejně jako každá restaurace potřebuje svoje menu. Nejprve si ovšem trochu pohrajeme se vzhledem našeho obsahu a pro každý ostavec nastavíme odlišnou barvu pozadí. Protože chceme, aby barva zasahovala až do okrajů stránky, nestačí ji nastavit přímo pro daný odstavec, ale budeme jej muset obalit.</p>
 <p>Na to se výborně hodí tag &lt;section&gt;. Každý obalující &lt;section&gt; tag by měl mít unikátní třídu, abychom v CSS mohli nastavit pro každý odstavec jiné barvičky.</p>
 <p> To ale ovšem není všechno - šířku sekcí omezuje &lt;div&gt; třídy container, proto jej smažeme a třídu raději nadělíme jednotlivým odstavcům. Váš kód by měl vypadat cca takto:</p>
-<code>
-&lt;section class="section1"&gt;
+<div class="code">
+  <code>&lt;section class="section1"&gt;
   &lt;p class="container"&gt;
     Lorem ipsum dolor sit amet...
   &lt;/p&gt;
@@ -151,11 +155,11 @@ Abychom zamezili "chytrým" telefonům všelijak webovou stránku velikostně š
     ...
   &lt;/p&gt;
   ...
-&lt;div&gt;
-</code>
+&lt;div&gt;</code>
+</div>
 <p>Nyní nám už nebrání nic v tom, abychom rozjeli image naší stránky v pořádně duhovém stylu. Do CSS zkopírujme níže uvedený kód s tím, že barvy klidně přizpůsobte své momentální náladě ši sexuální orientaci.</p>
-<code>
-.section1 {
+<div class="code">
+  <code>.section1 {
   color: LightCyan;
   background: DarkMagenta;
 }
@@ -174,13 +178,13 @@ Abychom zamezili "chytrým" telefonům všelijak webovou stránku velikostně š
 .section5 {
   color: SaddleBrown;
   background: LightYellow;
-}
-</code>
+}</code>
+</div>
 <p>
 Pokud se vám nelíbí černý rámeček, přidejte do CSS k body pravidlo "margin: 0;". Abychom mohli odkazovat na jednotlivé sekce, je třeba jim přidělit atribut id. Můžeme si zjednodušit práci v tom, že pouze přepíšeme atribut class na id, ale v tom případě je třeba upravit i výše uvedené CSS pravidla tak, aby místo tečky (pro třídu) obsahovaly selektory mřížku # (pro identifikátory).</p>
 <p>A nyní už je čas na samotné menu - šup tam s ním! Před první sekci vložme:</p>
-<code>
-&lt;div class="menu"&gt;
+<div class="code">
+  <code>&lt;div class="menu"&gt;
   &lt;div class="menu-items"&gt;
     &lt;a href="#section1"&gt;
       První sekce
@@ -198,11 +202,11 @@ Pokud se vám nelíbí černý rámeček, přidejte do CSS k body pravidlo "marg
       Pátá sekce
     &lt;/a&gt;
   &lt;/div&gt;
-&lt;/div&gt;
-</code>
+&lt;/div&gt;</code>
+</div>
 <p>No moc hezky to nevypadá. Pojďme přeskočit několik let praxe jako HTML kodér a okořeňme to nějakým sexy CSS...</p>
-<code>
-.menu {
+<div class="code">
+  <code>.menu {
   background: black;
   color: white;
   width: 100%;
@@ -221,23 +225,23 @@ section {
   display: flex;
   justify-content: center;
   align-items: center; /* Tohle vertikálně zarovná text odstavců na střed */
-}
-</code>
+}</code>
+</div>
 <p>A nyní můžeme klikat o 106! Oujé!</p>
 <h2>7. Přidání javascriptu pro smoothscrolling</h2>
 <p>Chcete aby při klikání stránka "neskákala", ale smyslně popojížděla? Stáhněte si <a href="jquery.min.js" target="blank">tenhle soubor</a> (pravý klik + uložit jako) a pak ještě <a href="jquery.smoothscroll.js" target="blank">tady tento soubor</a> do stejného adresáře, kde máte uložen váš index.html a na konec stránky těsně před zavírácí tag &lt;/body&gt; zkopírujte tento kód:</p>
-<code>
-&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
-&lt;script src="jquery.smoothscroll.js"&gt;&lt;/script&gt;
-</code>
+<div class="code">
+  <code>&lt;script src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;script src="jquery.smoothscroll.js"&gt;&lt;/script&gt;</code>
+</div>
 <h2>8. responsivní menu s breakpointy</h2>
 <p>Tak pozor, tady začíná jít do tuhého. Nad menu přidáme:</p>
-<code>
-&lt;a href="#" class="menu-button"&gt;Menu&lt;/a&gt;
-</code>
+<div class="code">
+  <code>&lt;a href="#" class="menu-button"&gt;Menu&lt;/a&gt;</code>
+  </div>
 <p>Do CSS přidáme:</p>
-<code>
-.menu-button {
+<div class="code">
+  <code>.menu-button {
   display: none;
 }
 @media (min-width: 751px) {
@@ -263,15 +267,16 @@ section {
   .menu {
     flex-direction: column;
   }
-}
-</code>
+}</code>
+</div>
 <p>Pod skripty přidané v předešlém kroku přidáme</p>
-<code>&lt;script type="text/javascript"&gt;
+<div class="code">
+  <code>&lt;script type="text/javascript"&gt;
 $('.menu-button').click(function(){
     $('.menu').slideToggle();
   })
-&lt;/script&gt;
-</code>
+&lt;/script&gt;</code>
+</div>
 <h2>9. Nahrání na github</h2>
 <p>Tohle je ta nejlehčí část! Běžte na <a href="https://www.github.com" target="_blank">www.github.com</a> a vytvořte si účet, pokud ho ještě nemáte. Poté postupujte dle screenshotů a vytvořte si repozitář, do kterého nahrajete index.html a dva externí soubory s javascriptem.</p>
 <p>Výsledný soubor index.html by měl vypadat zhruba <a href="test.html">takto</a></p>
