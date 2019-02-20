@@ -1,0 +1,223 @@
+<!doctype html>
+
+<html lang="cs">
+
+<head>
+    <title>Titulek stránky</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
+        body {
+            color: white;
+            background: black;
+            margin: 0;
+        }
+
+        a {
+            color: white;
+        }
+
+        .container {
+            /* Selektor začínající tečkou se týká všech elementů dané třídy */
+            width: 90%;
+            /* Šířka */
+            max-width: 600px;
+            /* Maximální šířka */
+            margin: auto;
+            /* Zarovnání bloku na střed */
+            text-align: center;
+            /* Zarovnání textu na střed */
+        }
+
+        body {
+            font-size: 20px;
+        }
+
+        @media(max-width: 1200px) {
+            body {
+                font-size: 18px;
+            }
+        }
+
+        @media(max-width: 1000px) {
+            body {
+                font-size: 16px;
+            }
+        }
+
+        @media(max-width: 700px) {
+            body {
+                font-size: 14px;
+            }
+        }
+
+        @media(max-width: 500px) {
+            body {
+                font-size: 12px;
+            }
+        }
+
+        #section1 {
+            color: LightCyan;
+            background: DarkMagenta;
+        }
+
+        #section2 {
+            color: LightSalmon;
+            background: SaddleBrown;
+        }
+
+        #section3 {
+            color: DarkOliveGreen;
+            background: PaleGreen;
+        }
+
+        #section4 {
+            color: Lime;
+            background: Black;
+        }
+
+        #section5 {
+            color: SaddleBrown;
+            background: LightYellow;
+        }
+
+        .menu {
+            background: black;
+            color: white;
+            width: 100%;
+            position: fixed; /* Tohle "připíchne" menu, takže nebude scrollovat */
+            top: 0; /* Menu chceme na vrchu stránky */
+        }
+        .menu-items {
+            display: flex; /* Flexbox umožňuje řadit blokové elementy vedle sebe, kuk sem https://css-tricks.com/snippets/css/a-guide-to-flexbox */
+            justify-content: center; /* Zarovnáme položky menu na střed */
+        }
+
+        .menu a { /* Tohle je zanořený selektor, platí pro všechny odkazy uvnitř menu  */
+            padding: 10px;
+        }
+
+        section {
+            height: 100vh; /* Magická jednotka odpovídající 1 % výšky viewportu, existuje i vw na šířku */
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Tohle vertikálně zarovná text odstavců na střed */
+        }
+
+        .menu-button {
+            display: none;
+        }
+
+        @media (min-width: 751px) {
+            .menu {
+                display: block !important;
+            }
+        }
+        @media (max-width: 750px) {
+            .menu-button {
+                display: block;
+                position: fixed;
+                top: 0;
+                right: 0;
+                padding: 20px;
+                background: black;
+            }
+
+            .menu {
+                display: none;
+                width: 6rem;
+                top: 55px;
+                right: 0px;
+            }   
+
+            .menu-items {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#" class="menu-button">Menu</a>
+    <div class="menu">
+        <div class="menu-items">
+            <a href="#section1">
+                První sekce
+            </a>
+            <a href="#section2">
+                Druhá sekce
+            </a>
+            <a href="#section3">
+                Třetí sekce
+            </a>
+            <a href="#section4">
+                Čtvrtá sekce
+            </a>
+            <a href="#section5">
+                Pátá sekce
+            </a>
+        </div>
+    </div>
+    <section id="section1">
+        <p class="container">
+            Spicy jalapeno bacon ipsum dolor amet spare ribs tail jerky tongue boudin tri-tip fatback turducken cupim.
+            Andouille
+            bacon tenderloin ball tip bresaola turkey. Fatback pork belly strip steak, picanha beef alcatra sirloin
+            kevin bacon
+            tongue. Rump meatball chicken strip steak frankfurter. Buffalo filet mignon bresaola shankle flank venison
+            frankfurter.
+        </p>
+    </section>
+    <section id="section2">
+        <p class="container">
+            Prosciutto shank ham hock swine bacon pork. Chuck t-bone shank frankfurter, pastrami alcatra pork belly
+            burgdoggen
+            meatball andouille tenderloin. Chicken jerky tri-tip venison, shank drumstick meatball pig short loin
+            meatloaf brisket
+            ham hock ribeye tail boudin. Sirloin turkey meatball pastrami pork chop beef tenderloin shoulder venison
+            landjaeger
+            spare ribs prosciutto shank jerky. Beef ribs leberkas jowl biltong capicola strip steak swine shank rump
+            hamburger
+            kielbasa ribeye short loin.
+        </p>
+    </section>
+    <section id="section3">
+        <p class="container">
+            Cow tenderloin bresaola, turducken sirloin ribeye t-bone turkey tri-tip meatball. Spare ribs porchetta pork
+            belly jowl.
+            Boudin andouille pork chop filet mignon capicola beef ribs drumstick corned beef alcatra beef turducken
+            salami ham
+            landjaeger. Tongue jowl pastrami bacon pancetta shoulder. Tail fatback frankfurter venison spare ribs
+            turducken
+            meatball. Swine cow pancetta buffalo, rump fatback tongue kielbasa beef ribs. Chicken tongue salami turkey.
+        </p>
+    </section>
+    <section id="section4">
+        <p class="container">
+            Pork belly short ribs ground round turkey meatball sausage. Brisket capicola beef ribs sausage rump. Jowl
+            andouille rump
+            short ribs flank doner. Ham hock prosciutto pork beef ribs.
+        </p>
+    </section>
+    <section id="section5">
+        <p class="container">
+            T-bone pancetta ball tip filet mignon, pork belly pork loin pastrami pig swine tongue porchetta alcatra.
+            Short ribs
+            short loin chuck, frankfurter beef burgdoggen kielbasa leberkas. Meatloaf meatball pork ground round
+            frankfurter venison
+            corned beef jowl drumstick beef ribs ribeye. Turkey beef ham, jowl ball tip turducken spare ribs burgdoggen
+            drumstick
+            tenderloin ribeye.</p>
+        </div>
+    </section>
+    <script src="jquery.min.js"></script>
+    <script src="jquery.smoothscroll.js"></script>
+    <script type="text/javascript">
+        $('.menu-button').click(function () {
+            $(this).toggleClass('opened');
+            $('.menu').slideToggle();
+        })
+    </script>
+</body>
+
+</html>

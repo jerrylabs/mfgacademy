@@ -52,7 +52,7 @@
 &lt;style&gt;
   body {
     color: white;
-    backgroud: black;
+    background: black;
   }
 &lt;/style&gt;
 </code>
@@ -100,26 +100,26 @@ Je trošku divné zobrazovat stejnou velikost písmenek na full HD monitoru i na
 </p>
 <code>
 body {
-  font-size: 12px;
+  font-size: 20px;
 }
-@media(max-width: 500px) {
+@media(max-width: 1200px) {
   body {
-    font-size: 10px;  
-  }
-}
-@media(max-width: 700px) {
-  body {
-    font-size: 12px;  
+    font-size: 18px;
   }
 }
 @media(max-width: 1000px) {
   body {
-    font-size: 14px;  
+    font-size: 16px;
   }
 }
-@media(max-width: 1200px) {
+@media(max-width: 700px) {
   body {
-    font-size: 16px;  
+    font-size: 14px;
+  }
+}
+@media(max-width: 500px) {
+  body {
+    font-size: 12px;
   }
 }
 </code>
@@ -165,7 +165,7 @@ Abychom zamezili "chytrým" telefonům všelijak webovou stránku velikostně š
 }
 .section3 {
   color: DarkOliveGreen;
-  background: LemonChiffon;
+  background: PaleGreen;
 }
 .section4 {
   color: Lime;
@@ -177,25 +177,27 @@ Abychom zamezili "chytrým" telefonům všelijak webovou stránku velikostně š
 }
 </code>
 <p>
-Abychom mohli odkazovat na jednotlivé sekce, je třeba jim přidělit atribut id. Můžeme si zjednodušit práci v tom, že pouze přepíšeme atribut class na id, ale v tom případě je třeba upravit i výše uvedené CSS pravidla tak, aby místo tečky (pro třídu) obsahovaly selektory mřížku # (pro identifikátory).</p>
+Pokud se vám nelíbí černý rámeček, přidejte do CSS k body pravidlo "margin: 0;". Abychom mohli odkazovat na jednotlivé sekce, je třeba jim přidělit atribut id. Můžeme si zjednodušit práci v tom, že pouze přepíšeme atribut class na id, ale v tom případě je třeba upravit i výše uvedené CSS pravidla tak, aby místo tečky (pro třídu) obsahovaly selektory mřížku # (pro identifikátory).</p>
 <p>A nyní už je čas na samotné menu - šup tam s ním! Před první sekci vložme:</p>
 <code>
 &lt;div class="menu"&gt;
-  &lt;a href="#section1"&gt;
-    První sekce
-  &lt;/a&gt;
-  &lt;a href="#section2"&gt;
-    Druhá sekce
-  &lt;/a&gt;
-  &lt;a href="#section3"&gt;
-    Třetí sekce
-  &lt;/a&gt;
-  &lt;a href="#section4"&gt;
-    Čtvrtá sekce
-  &lt;/a&gt;
-  &lt;a href="#section5"&gt;
-    Pátá sekce
-  &lt;/a&gt;
+  &lt;div class="menu-items"&gt;
+    &lt;a href="#section1"&gt;
+      První sekce
+    &lt;/a&gt;
+    &lt;a href="#section2"&gt;
+      Druhá sekce
+    &lt;/a&gt;
+    &lt;a href="#section3"&gt;
+      Třetí sekce
+    &lt;/a&gt;
+    &lt;a href="#section4"&gt;
+      Čtvrtá sekce
+    &lt;/a&gt;
+    &lt;a href="#section5"&gt;
+      Pátá sekce
+    &lt;/a&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
 </code>
 <p>No moc hezky to nevypadá. Pojďme přeskočit několik let praxe jako HTML kodér a okořeňme to nějakým sexy CSS...</p>
@@ -206,16 +208,18 @@ Abychom mohli odkazovat na jednotlivé sekce, je třeba jim přidělit atribut i
   width: 100%;
   position: fixed; /* Tohle "připíchne" menu, takže nebude scrollovat */
   top: 0; /* Menu chceme na vrchu stránky */
-  display: flex; /* Flexbox umožňuje řadit blokové elementy vedle sebe, kuk sem https://css-tricks.com/snippets/css/a-guide-to-flexbox */
-  justify-content: center;  /* Zarovnáme položky menu na střed */
 }
-.menu a { /* Tohle je zanořený selektor, platí pro všechny odkazy uvnitř menu  */ 
+.menu-items {
+  display: flex; /* Flexbox umožňuje řadit blokové elementy vedle sebe, kuk <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox"target="_blank">sem</a>  */
+  justify-content: center; /* Zarovnáme položky menu na střed */
+}
+.menu a { /* Tohle je zanořený selektor, platí pro všechny odkazy uvnitř menu */
   padding: 10px;
-} 
+}
 section {
   height: 100vh; /* Magická jednotka odpovídající 1 % výšky viewportu, existuje i vw na šířku */
   display: flex;
-  justify-centent: center; 
+  justify-content: center;
   align-items: center; /* Tohle vertikálně zarovná text odstavců na střed */
 }
 </code>
@@ -227,38 +231,50 @@ section {
 &lt;script src="jquery.smoothscroll.js"&gt;&lt;/script&gt;
 </code>
 <h2>8. responsivní menu s breakpointy</h2>
-<p>Tak pozor, tady začíná jít do tuhého. Do menu přidáme k odkazům:</p>
+<p>Tak pozor, tady začíná jít do tuhého. Nad menu přidáme:</p>
 <code>
-<a href="#" class="menu-button">Menu</div>
+&lt;a href="#" class="menu-button"&gt;Menu&lt;/a&gt;
 </code>
 <p>Do CSS přidáme:</p>
 <code>
 .menu-button {
   display: none;
 }
+@media (min-width: 751px) {
+  .menu {
+    display: block !important;
+  }
+}
 @media (max-width: 750px) {
   .menu-button {
     display: block;
-	position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
+    padding: 20px;
+    background: black;
   }
   .menu {
     display: none;
-	flex-direction: column;
+    width: 6rem;
+    top: 55px;
+    right: 0px;
+  }
+  .menu {
+    flex-direction: column;
   }
 }
 </code>
-
- Pod skripty přidané v předešlém kroku přidáme</p>
-
+<p>Pod skripty přidané v předešlém kroku přidáme</p>
+<code>&lt;script type="text/javascript"&gt;
 $('.menu-button').click(function(){
-    $(this).toggleClass('opened');
     $('.menu').slideToggle();
   })
-
-<h2>9. nahrání na github</h2>
+&lt;/script&gt;
+</code>
+<h2>9. Nahrání na github</h2>
 <p>Tohle je ta nejlehčí část! Běžte na <a href="https://www.github.com" target="_blank">www.github.com</a> a vytvořte si účet, pokud ho ještě nemáte. Poté postupujte dle screenshotů a vytvořte si repozitář, do kterého nahrajete index.html a dva externí soubory s javascriptem.</p>
+<p>Výsledný soubor index.html by měl vypadat zhruba <a href="test.html">takto</a></p>
 <img src="img/github01.png" />
 <p>Poté přejděte do nastavení repozitáře, nascrollujte dolů na sekci GitHub Pages a určete master brach jako zdroj.</p>
 <img src="img/github02.png" />
